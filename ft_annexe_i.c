@@ -61,6 +61,7 @@ void		ft_prec_sup(t_flags *data, int prec, int nbr)
 	else
 		ft_putnbr(nbr);
 	data->count += data->precision;
+	//printf("c = %d\n", data->count);
 }
 
 void	ft_treat_width_i(int len, int nbr, t_flags *data)
@@ -70,14 +71,17 @@ void	ft_treat_width_i(int len, int nbr, t_flags *data)
 
 	w = data->width;
 	tmp = 0;
-	if (w > 0 && data->minus == 0)
+	//printf("w = %d\n", data->zero);
+	if (w <= len || w <= data->precision/* && data->precision == 0*/)
+		ft_treat_prec_i(len, nbr, data);
+	else if (w > len && data->minus == 0)
 	{
 		if (w >= data->precision && data->zero == 1)
 			ft_width_nominus_zero(w, data, len, nbr);
 		else if (w >= data->precision && data->zero == 0)
 			ft_width_nominus_nozero(w, data, len, nbr);
 	}
-	else if (w > 0 && data->minus == 1)
+	else if (w > len && data->minus == 1)
 	{
 		if (w >= data->precision && data->zero == 1)
 			ft_width_minus_zero(w, data, len, nbr);
@@ -122,15 +126,21 @@ void	ft_width_nominus_nozero(int w, t_flags *data, int len, int nbr)
 		tmp = w - len;
 	data->count += tmp;
 	if (data->sign != 0)
+	{
+		//if (tmp < 1) // plus nécessaire puisque quand w = len ce n'est pas ici
+		//	data->count++;
 		tmp--;
+	}
 	while (tmp-- > 0)
 		ft_putchar(' ');
 	if (data->sign == 1)
 		ft_putchar('-');
 	else if (data->sign == 2)
 		ft_putchar('+');
-	if (data->sign != 0)
+	//if (data->sign != 0)
+	//{
 		data->sign = 0;
+	//}
 	if (nbr == 0)
 		ft_special_argz_prec(len, data);
 	else

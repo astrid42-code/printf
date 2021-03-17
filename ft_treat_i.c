@@ -80,11 +80,14 @@ void	ft_treat_prec_i(int len, int nbr, t_flags *data)
 	{
 		if (nbr == -2147483648)
 		{
+			if (data->width <= len || data->width <= data->precision)
+				ft_putchar('-');
 			write(1, "2147483648", 10);
 			data->count++;
 		}
 		else
 		{
+			//printf("c = %d\n", data->count);
 			if (data->sign != 0)
 			{
 				if (data->sign == 1)
@@ -97,6 +100,6 @@ void	ft_treat_prec_i(int len, int nbr, t_flags *data)
 		}
 		data->count += len;
 	}
-	else if (data->precision == 0)
-		return ;
+	//else if (data->precision == 0)
+	//	return ;
 }

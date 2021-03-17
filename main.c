@@ -40,19 +40,19 @@ int main()
     printf("ma fct 0-.21 p null: ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
 
 int max = 2147483647;
-	ret1 = ft_printf("%0*.0i \n", -21, max);
-    ret2 = printf("%0*.0i \n", -21, max);
+	ret1 = ft_printf("%0*.*i\n", 21, 10, -101);
+    ret2 = printf("%0*.*i\n", 21, 10, -101);
     printf("ma fct 0*.0i -21 max : ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
+
 */
+    ret1 = ft_printf("%-4.*i \n", -4, 0);
+    ret2 = printf("%-4.*i \n", -4, 0);
+    printf("ma fct -4.*i -4 ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
 
-    ret1 = ft_printf("%-0*.10i %-0*.0i \n", 21, 1021, 21, -1011);
-    ret2 = printf("%-0*.10i %-0*.0i \n", 21, 1021, 21, -1011);
-    printf("ma fct 0*.10i 21 min ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
-
-
+/*
     ret1 = ft_printf("%-3.i\n", -120);
     ret2 = printf("%-3.i\n", -120);
     printf("ma fct -3.i, 135 : ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
-
+*/
 	return (0);
 }

@@ -44,7 +44,14 @@ void	ft_width_minus_nozero(int w, t_flags *data, int len, int nbr)
 {
 	int tmp;
 
+	if (data->precision >= len && data->precision < data->width)
+		tmp = w - data->precision;
+	else
+		tmp = w - len;
 	if (data->sign != 0)
+		tmp--;
+	data->count += tmp;
+	if (data->sign != 0) 
 	{
 		if (data->sign == 1)
 			ft_putchar('-');
@@ -52,11 +59,9 @@ void	ft_width_minus_nozero(int w, t_flags *data, int len, int nbr)
 			ft_putchar('+');
 		data->count++;
 	}
-	tmp = w - len;
-	if (data->sign != 0)
+	/*if (data->sign != 0)
 		tmp--; // attention  : a priori il ne faut pas tjrs baisser en cas de sign != 0 > il faudrait une autre condition
-	if (tmp > 0)
-		data->count += tmp;
+		data->count += tmp;*/
 	data->sign = 0;
 	if (nbr == 0)
 		ft_special_argz_prec(len, data);
@@ -71,7 +76,7 @@ void	ft_special_argz(int len, t_flags *data, int nbr)
 	if (data->precision > 0 && (data->width == 0 ||
 					data->width <= data->precision))
 		ft_special_argz_prec(len, data);
-	else if (data->width > 0)
+	else if (data->width > data->precision) // ou > 0?
 		ft_treat_width_i(len, nbr, data);
 	else if (data->precision == 0)
 		return ;
@@ -90,11 +95,12 @@ void	ft_special_argz_prec(int len, t_flags *data)
 		if (data->width == 0)
 			data->count++;
 	}
-	else if (data->precision == len)
+	else if (data->precision >= len) // ou ==?
 	{
 		while (len-- > 0)
 			ft_putchar('0');
 		data->count += data->precision;
+		
 	}
 	else if (len == 0)
 		return ;
