@@ -1,0 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/15 14:10:14 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/15 21:55:17 by astridgault      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef	FT_PRINTF_H
+# define FT_PRINTF_H
+
+# include <stdarg.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+#include <limits.h>
+
+typedef struct	s_flags
+{
+	int		type;
+	int		zero;
+	int		minus;
+	int		width;
+	int		precision;
+	void	*arg;
+	int		sign;
+	int		count;
+	int		i;
+}				t_flags;
+
+int			ft_printf(const char *format, ...);
+
+void		ft_isnotpercent(const char *format, t_flags *data);
+void		ft_treat_singlepc(t_flags *data);
+void		ft_ispercent(const char *format, t_flags *data, va_list args);
+int			ft_check_type(char c);
+
+t_flags		ft_init_struct(void);
+void		ft_data_struct(t_flags *data, const char *format, va_list arg);
+void		ft_struct_zero(t_flags *data, const char *format);
+void		ft_struct_minus(t_flags *data, const char *format);
+void		ft_struct_width(t_flags *data, va_list arg, const char *format);
+void		ft_struct_prec(t_flags *data, va_list arg, const char *format);
+void		ft_check_prec_struct(t_flags *data, const char *format);
+void		ft_struct_prec_zero(t_flags *data, const char *format);
+void		ft_struct_prec_zero_annexe(t_flags *data, const char *format);
+void		ft_parser(t_flags *data, va_list args);
+void		ft_convert_arg(t_flags *data, va_list args);
+
+void		ft_treat_c(t_flags *data);
+void		ft_zero_c(t_flags *data);
+void		ft_minus_c(t_flags *data);
+void		ft_nominus_c(t_flags *data);
+
+void		ft_treat_str(t_flags *data);
+void		ft_check_struct_str(t_flags *data);
+int			ft_treat_prec_str(t_flags *data, int len);
+void		ft_print_str(t_flags *data, int prec, int w, int len);
+void		ft_print_minus_str(t_flags *data, int w, int prec, int len);
+void		ft_print_nominus_str(t_flags *data, int w, int prec, int len);
+
+void		ft_treat_i(t_flags *data);
+int			ft_nbr_neg(int nbr, t_flags *data);
+int			ft_treat_len_i(t_flags *data, int len, int nbr);
+void		ft_print_nbr(t_flags *data, int len, int nbr);
+void		ft_treat_prec_i(int len, int nbr, t_flags *data);
+void		ft_special_argz(int len, t_flags *data, int nbr);
+void		ft_special_argz_prec(int len, t_flags *data);
+void		ft_prec_sup(t_flags *data, int prec, int nbr);
+void		ft_treat_width_i(int len, int nbr, t_flags *data);
+void		ft_width_nominus_zero(int w, t_flags *data, int len, int nbr);
+void		ft_width_nominus_nozero(int w, t_flags *data, int len, int nbr);
+void		ft_width_minus_zero(int w, t_flags *data, int len, int nbr);
+void		ft_width_minus_nozero(int w, t_flags *data, int len, int nbr);
+
+void		ft_putchar(char c);
+void		ft_putstr(char *str);
+int			ft_strlen(char *str);
+int			ft_nbrsize(int nbr);
+int			ft_nbrsize_long(long nbr);
+void		ft_putnbr(int nb);
+
+#endif
