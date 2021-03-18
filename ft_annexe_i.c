@@ -71,7 +71,6 @@ void	ft_treat_width_i(int len, int nbr, t_flags *data)
 
 	w = data->width;
 	tmp = 0;
-	//printf("w = %d\n", data->zero);
 	if (w <= len || w <= data->precision/* && data->precision == 0*/)
 		ft_treat_prec_i(len, nbr, data);
 	else if (w > len && data->minus == 0)

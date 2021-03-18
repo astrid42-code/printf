@@ -37,7 +37,7 @@ void	ft_treat_i(t_flags *data)
 	len = ft_treat_len_i(data, len, nbr);
 	ft_check_struct_i(data);
 	if (nbr == 0)
-		ft_special_argz(len, data, nbr);
+		ft_special_argz(len, data);
 	else
 		ft_print_nbr(data, len, nbr);
 	if (data->sign != 0)

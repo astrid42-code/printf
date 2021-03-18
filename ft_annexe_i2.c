@@ -51,7 +51,7 @@ void	ft_width_minus_nozero(int w, t_flags *data, int len, int nbr)
 	if (data->sign != 0)
 		tmp--;
 	data->count += tmp;
-	if (data->sign != 0) 
+	if (data->sign != 0)
 	{
 		if (data->sign == 1)
 			ft_putchar('-');
@@ -71,20 +71,25 @@ void	ft_width_minus_nozero(int w, t_flags *data, int len, int nbr)
 		ft_putchar(' ');
 }
 
-void	ft_special_argz(int len, t_flags *data, int nbr)
+void	ft_special_argz(int len, t_flags *data)
 {
+//printf("w= %d\n", data->width);
 	if (data->precision > 0 && (data->width == 0 ||
 					data->width <= data->precision))
+	{
 		ft_special_argz_prec(len, data);
-	else if (data->width > data->precision) // ou > 0?
-		ft_treat_width_i(len, nbr, data);
-	else if (data->precision == 0)
-		return ;
-	else
+	}
+	else if (data->width == 0 && data->precision == -1)
 	{
 		ft_putchar('0');
 		data->count++;
 	}
+	else if (data->width > data->precision)// ou > data->prec?
+	{
+		ft_treat_argz_width(len, data);
+	}
+	else if (data->precision == 0)
+		return ;
 }
 
 void	ft_special_argz_prec(int len, t_flags *data)
@@ -92,7 +97,7 @@ void	ft_special_argz_prec(int len, t_flags *data)
 	if (data->precision == -1)
 	{
 		ft_putchar('0');
-		if (data->width == 0)
+		//if (data->width == 0)
 			data->count++;
 	}
 	else if (data->precision >= len) // ou ==?
@@ -100,8 +105,42 @@ void	ft_special_argz_prec(int len, t_flags *data)
 		while (len-- > 0)
 			ft_putchar('0');
 		data->count += data->precision;
-		
+
 	}
 	else if (len == 0)
 		return ;
+}
+
+void	ft_treat_argz_width(int len, t_flags *data)
+{
+	int tmp;
+
+	if (data->minus == 1)
+	{
+		ft_special_argz_prec(len, data);
+		tmp = data->width - len;
+		data->count += tmp;
+		ft_special_argz_width2(tmp, data);
+	}
+	else if (data->minus == 0)
+	{
+		tmp = data->width - len;
+		data->count += tmp;
+		ft_special_argz_width2(tmp, data);
+		ft_special_argz_prec(len, data);
+	}
+}
+
+void	ft_special_argz_width2(int tmp, t_flags *data)
+{
+	if (data->zero == 0)
+	{
+		while (tmp-- > 0)
+			ft_putchar(' ');
+	}
+	else if (data->zero == 1)
+	{
+		while (tmp-- > 0)
+			ft_putchar('0');
+	}
 }

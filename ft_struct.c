@@ -90,5 +90,7 @@ void	ft_struct_width(t_flags *data, va_list arg, const char *format)
 	{
 		data->width *= -1;
 		data->minus = 1;
+		if (data->minus == 1 && data->zero == 1)
+			data->zero = 0;
 	}
 }
