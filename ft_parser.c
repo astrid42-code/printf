@@ -23,12 +23,13 @@ void	ft_parser(t_flags *data, va_list args)
 		ft_treat_i(data);
 	if (data->type == 'u')
 		ft_treat_u(data);
+	if (data->type == '%')
+		ft_treat_pc(data);
 /*	if (data->type == 'x' || data->type == 'X')
 		ft_treat_x(data);
 	if (data->type == 'p')
 		ft_treat_ptr(data);
-	if (data->type == '%')
-		ft_treat_pc(data);*/
+*/
 }
 
 void	ft_convert_arg(t_flags *data, va_list args)

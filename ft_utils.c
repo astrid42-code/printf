@@ -58,9 +58,9 @@ void	ft_putnbr(int nb)
 		ft_putchar((n % 10) + 48);
 }
 
-void	ft_putnbr_u(unsigned long int nb)
+void	ft_putnbr_u(unsigned int nb)
 {
-	unsigned long int n;
+	unsigned int n;
 
 	n = nb;
 	if (n > 9)

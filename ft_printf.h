@@ -95,6 +95,10 @@ void		ft_width_minus_zero_u(int w, t_flags *data, int len,
 void		ft_width_minus_nozero_u(int w, t_flags *data, int len,
 											unsigned int nbr);
 
+void		ft_treat_pc(t_flags *data);
+void		ft_treat_width_pc(t_flags *data);
+
+
 void		ft_putchar(char c);
 void		ft_putstr(char *str);
 int			ft_strlen(char *str);

@@ -53,7 +53,7 @@ int		ft_nbrsize_long(long nbr)
 	return (count);
 }
 
-int		ft_nbrsize_u(unsigned long int nbr)
+int		ft_nbrsize_u(unsigned int nbr)
 {
 	int count;
 
