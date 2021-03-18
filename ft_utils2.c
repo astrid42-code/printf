@@ -22,12 +22,7 @@ int		ft_nbrsize(int nbr)
 		count++;
 		return (count);
 	}
-/*	if (nbr < 0)
-	{
-		nbr *= -1;
-		count++;
-	}
-*/	while (nbr > 0)
+	while (nbr > 0)
 	{
 		nbr /= 10;
 		count++;
@@ -36,6 +31,29 @@ int		ft_nbrsize(int nbr)
 }
 
 int		ft_nbrsize_long(long nbr)
+{
+	int count;
+
+	count = 0;
+	if (nbr == 0)
+	{
+		count++;
+		return (count);
+	}
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		count++;
+	}
+	while (nbr > 0)
+	{
+		nbr /= 10;
+		count++;
+	}
+	return (count);
+}
+
+int		ft_nbrsize_u(unsigned long int nbr)
 {
 	int count;
 

@@ -45,13 +45,18 @@ int max = 2147483647;
     printf("ma fct 0*.0i -21 max : ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
 
 */
-    ret1 = ft_printf("%0*.*i \n", -4, -4, 0);
-    ret2 = printf("%0*.*i \n", -4, -4, 0);
-    printf("ma fct 0*.*i -4, -4 0 ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
+    ret1 = ft_printf("%0*.*u \n", 21, 10, -101);
+    ret2 = printf("%0*.*u \n", 21, 10, -101);
+    printf("ma fct 0*.*u 21, 10, -101 ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
 
-    ret1 = ft_printf("%0*i \n", 0, 0);
-    ret2 = printf("%0*i \n", 0, 0);
-    printf("ma fct 0*i 2, 0 ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
+    ret1 = ft_printf("%0*u \n", 21, -1011);
+    ret2 = printf("%0*u \n", 21, -1011);
+    printf("ma fct 0*u 21, -1011 ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
+
+    ret1 = ft_printf("%-0*.0u \n", 21, -1011);
+    ret2 = printf("%-0*.0u \n", 21, -1011);
+    printf("ma fct-0*.0u 21, -1011, -101 ret1 %i vraie fct : ret2 %i\n", ret1, ret2);
+
 /*
     ret1 = ft_printf("%-3.i\n", -120);
     ret2 = printf("%-3.i\n", -120);

@@ -65,6 +65,7 @@ void		ft_print_nominus_str(t_flags *data, int w, int prec, int len);
 
 void		ft_treat_i(t_flags *data);
 int			ft_nbr_neg(int nbr, t_flags *data);
+void		ft_check_struct_i(t_flags *data);
 int			ft_treat_len_i(t_flags *data, int len, int nbr);
 void		ft_print_nbr(t_flags *data, int len, int nbr);
 void		ft_treat_prec_i(int len, int nbr, t_flags *data);
@@ -79,11 +80,28 @@ void		ft_width_nominus_nozero(int w, t_flags *data, int len, int nbr);
 void		ft_width_minus_zero(int w, t_flags *data, int len, int nbr);
 void		ft_width_minus_nozero(int w, t_flags *data, int len, int nbr);
 
+void		ft_treat_u(t_flags *data);
+int			ft_treat_len_u(t_flags *data, int len, unsigned int nbr);
+void		ft_print_nbr_u(t_flags *data, int len, unsigned int nbr);
+void		ft_treat_prec_u(int len, unsigned int nbr, t_flags *data);
+void		ft_prec_sup_u(t_flags *data, int prec, unsigned int nbr);
+void		ft_treat_width_u(int len, unsigned int nbr, t_flags *data);
+void		ft_width_nominus_zero_u(int w, t_flags *data, int len,
+											unsigned int nbr);
+void		ft_width_nominus_nozero_u(int w, t_flags *data, int len,
+											unsigned int nbr);
+void		ft_width_minus_zero_u(int w, t_flags *data, int len,
+											unsigned int nbr);
+void		ft_width_minus_nozero_u(int w, t_flags *data, int len,
+											unsigned int nbr);
+
 void		ft_putchar(char c);
 void		ft_putstr(char *str);
 int			ft_strlen(char *str);
 int			ft_nbrsize(int nbr);
 int			ft_nbrsize_long(long nbr);
 void		ft_putnbr(int nb);
+void		ft_putnbr_u(unsigned int nb);
+int			ft_nbrsize_u(unsigned int nbr);
 
 #endif

@@ -21,10 +21,10 @@ void	ft_parser(t_flags *data, va_list args)
 		ft_treat_str(data);
 	if (data->type == 'i' || data->type == 'd')
 		ft_treat_i(data);
-/*	if (data->type == 'x' || data->type == 'X')
-		ft_treat_x(data);
 	if (data->type == 'u')
 		ft_treat_u(data);
+/*	if (data->type == 'x' || data->type == 'X')
+		ft_treat_x(data);
 	if (data->type == 'p')
 		ft_treat_ptr(data);
 	if (data->type == '%')

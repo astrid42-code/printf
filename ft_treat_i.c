@@ -100,6 +100,4 @@ void	ft_treat_prec_i(int len, int nbr, t_flags *data)
 		}
 		data->count += len;
 	}
-	//else if (data->precision == 0)
-	//	return ;
 }

@@ -29,7 +29,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-int		ft_strlen(char *str)
+int			ft_strlen(char *str)
 {
 	int count;
 
@@ -48,6 +48,20 @@ void	ft_putnbr(int nb)
 		ft_putchar('-');
 		nb *= -1;
 	}
+	n = nb;
+	if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		ft_putchar((n % 10) + 48);
+	}
+	if (n >= 0 && n <= 9)
+		ft_putchar((n % 10) + 48);
+}
+
+void	ft_putnbr_u(unsigned long int nb)
+{
+	unsigned long int n;
+
 	n = nb;
 	if (n > 9)
 	{
