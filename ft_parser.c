@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 15:19:59 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/15 20:18:40 by astridgault      ###   ########.fr       */
+/*   Created: 2021/03/18 15:19:37 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 11:11:21 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ void	ft_parser(t_flags *data, va_list args)
 		ft_treat_u(data);
 	if (data->type == '%')
 		ft_treat_pc(data);
-/*	if (data->type == 'x' || data->type == 'X')
-		ft_treat_x(data);
+	if (data->type == 'x' || data->type == 'X')
+		ft_treat_hexa(data);
 	if (data->type == 'p')
 		ft_treat_ptr(data);
-*/
 }
 
 void	ft_convert_arg(t_flags *data, va_list args)

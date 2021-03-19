@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_treat_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 16:03:27 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/15 19:55:22 by astridgault      ###   ########.fr       */
+/*   Created: 2021/03/19 11:17:10 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 15:07:19 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_check_struct_str(t_flags *data)
-{
-	if (data->zero == 1)
-		data->zero = 0;
-}
 
 void	ft_treat_str(t_flags *data)
 {
@@ -26,7 +20,8 @@ void	ft_treat_str(t_flags *data)
 
 	len = ft_strlen((char*)data->arg);
 	w = 0;
-	ft_check_struct_str(data);
+	if (data->zero == 1)
+		data->zero = 0;
 	prec = ft_treat_prec_str(data, len);
 	if (data->width != 0 && data->width >= prec)
 		w = data->width - prec;
@@ -76,16 +71,13 @@ void	ft_print_str(t_flags *data, int prec, int w, int len)
 
 void	ft_print_nominus_str(t_flags *data, int w, int prec, int len)
 {
-	int 	i;
+	int		i;
 	char	*tmp;
 
 	tmp = (char*)data->arg;
 	i = 0;
-	while (i < w)
-	{
+	while (i++ < w)
 		ft_putchar(' ');
-		i++;
-	}
 	data->count += w;
 	i = 0;
 	if (prec != 0 && prec < len)

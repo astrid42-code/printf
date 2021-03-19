@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 11:37:22 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/18 12:35:20 by asgaulti         ###   ########.fr       */
+/*   Created: 2021/03/19 11:08:51 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 14:47:00 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_special_argz(int len, t_flags *data)
 {
-//printf("w= %d\n", data->width);
 	if (data->precision > 0 && (data->width == 0 ||
 					data->width <= data->precision))
 	{
@@ -25,7 +24,7 @@ void	ft_special_argz(int len, t_flags *data)
 		ft_putchar('0');
 		data->count++;
 	}
-	else if (data->width > data->precision)// ou > data->prec?
+	else if (data->width > data->precision)
 	{
 		ft_treat_argz_width(len, data);
 	}
@@ -38,10 +37,9 @@ void	ft_special_argz_prec(int len, t_flags *data)
 	if (data->precision == -1)
 	{
 		ft_putchar('0');
-		//if (data->width == 0)
-			data->count++;
+		data->count++;
 	}
-	else if (data->precision >= len) // ou ==?
+	else if (data->precision >= len)
 	{
 		while (len-- > 0)
 			ft_putchar('0');

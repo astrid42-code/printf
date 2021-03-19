@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_annexe_u.c                                      :+:      :+:    :+:   */
+/*   ft_annexe_hexa.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 11:10:34 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/19 11:10:52 by asgaulti         ###   ########.fr       */
+/*   Created: 2021/03/18 16:05:40 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 15:07:35 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_treat_width_u(int len, unsigned int nbr, t_flags *data)
+void	ft_treat_width_hexa(int len, unsigned int nbr, t_flags *data)
 {
 	int	w;
 	int tmp;
@@ -20,24 +20,25 @@ void	ft_treat_width_u(int len, unsigned int nbr, t_flags *data)
 	w = data->width;
 	tmp = 0;
 	if (w <= len || w <= data->precision)
-		ft_treat_prec_u(len, nbr, data);
+		ft_treat_prec_hexa(len, nbr, data);
 	else if (w > len && data->minus == 0)
 	{
 		if (w >= data->precision && data->zero == 1)
-			ft_width_nominus_zero_u(w, data, len, nbr);
+			ft_width_nominus_zero_hexa(w, data, len, nbr);
 		else if (w >= data->precision && data->zero == 0)
-			ft_width_nominus_nozero_u(w, data, len, nbr);
+			ft_width_nominus_nozero_hexa(w, data, len, nbr);
 	}
 	else if (w > len && data->minus == 1)
 	{
 		if (w >= data->precision && data->zero == 1)
-			ft_width_minus_zero_u(w, data, len, nbr);
+			ft_width_minus_zero_hexa(w, data, len, nbr);
 		else if (w >= data->precision && data->zero == 0)
-			ft_width_minus_nozero_u(w, data, len, nbr);
+			ft_width_minus_nozero_hexa(w, data, len, nbr);
 	}
 }
 
-void	ft_width_nominus_zero_u(int w, t_flags *data, int len, unsigned int nbr)
+void	ft_width_nominus_zero_hexa(int w, t_flags *data, int len,
+									unsigned int nbr)
 {
 	int	tmp;
 
@@ -60,10 +61,10 @@ void	ft_width_nominus_zero_u(int w, t_flags *data, int len, unsigned int nbr)
 	if (nbr == 0)
 		ft_special_argz_prec(len, data);
 	else
-		ft_treat_prec_u(len, nbr, data);
+		ft_treat_prec_hexa(len, nbr, data);
 }
 
-void	ft_width_nominus_nozero_u(int w, t_flags *data, int len,
+void	ft_width_nominus_nozero_hexa(int w, t_flags *data, int len,
 										unsigned int nbr)
 {
 	int tmp;
@@ -85,10 +86,11 @@ void	ft_width_nominus_nozero_u(int w, t_flags *data, int len,
 	if (nbr == 0)
 		ft_special_argz_prec(len, data);
 	else
-		ft_treat_prec_u(len, nbr, data);
+		ft_treat_prec_hexa(len, nbr, data);
 }
 
-void	ft_width_minus_zero_u(int w, t_flags *data, int len, unsigned int nbr)
+void	ft_width_minus_zero_hexa(int w, t_flags *data, int len,
+									unsigned int nbr)
 {
 	int tmp;
 
@@ -111,12 +113,13 @@ void	ft_width_minus_zero_u(int w, t_flags *data, int len, unsigned int nbr)
 	if (nbr == 0)
 		ft_special_argz_prec(len, data);
 	else
-		ft_treat_prec_u(len, nbr, data);
+		ft_treat_prec_hexa(len, nbr, data);
 	while (tmp-- > 0)
 		ft_putchar(' ');
 }
 
-void	ft_width_minus_nozero_u(int w, t_flags *data, int len, unsigned int nbr)
+void	ft_width_minus_nozero_hexa(int w, t_flags *data, int len,
+										unsigned int nbr)
 {
 	int tmp;
 
@@ -139,7 +142,7 @@ void	ft_width_minus_nozero_u(int w, t_flags *data, int len, unsigned int nbr)
 	if (nbr == 0)
 		ft_special_argz_prec(len, data);
 	else
-		ft_treat_prec_u(len, nbr, data);
+		ft_treat_prec_hexa(len, nbr, data);
 	while (tmp-- > 0)
 		ft_putchar(' ');
 }

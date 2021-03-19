@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 14:23:46 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/15 16:07:21 by asgaulti         ###   ########.fr       */
+/*   Created: 2021/03/19 11:06:45 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 14:02:08 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_flags	ft_init_struct(void)
 {
-	t_flags		data;
+	t_flags	data;
 
 	data.zero = 0;
 	data.minus = 0;
@@ -58,7 +58,7 @@ void	ft_struct_minus(t_flags *data, const char *format)
 		data->minus = 1;
 		data->i++;
 	}
-	else if(format[data->i] == '+')
+	else if (format[data->i] == '+')
 	{
 		data->sign = 2;
 		data->i++;
@@ -71,7 +71,7 @@ void	ft_struct_width(t_flags *data, va_list arg, const char *format)
 {
 	if (data->width != 0)
 		data->width = 0;
-	if (format[data->i] == '-' || format[data->i] == '0')
+	while (format[data->i] == '-' || format[data->i] == '0')
 		data->i++;
 	if (format[data->i] == '*')
 	{

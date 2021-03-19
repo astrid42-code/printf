@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 14:09:58 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/15 17:12:36 by asgaulti         ###   ########.fr       */
+/*   Created: 2021/03/19 11:11:41 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 14:45:43 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_ispercent(const char *format, t_flags *data, va_list args)
 {
 	data->i++;
 	ft_data_struct(data, format, args);
-	//printf("type = %c\nzero = %d\nminus = %d\nw = %d\np = %d\nc = %d\ni = %d\n", data->type, data->zero, data->minus, data->width, data->precision, data->count, data->i);
 	ft_parser(data, args);
 }
 

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 14:17:19 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/15 16:46:41 by asgaulti         ###   ########.fr       */
+/*   Created: 2021/03/19 11:22:20 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 11:22:28 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-int			ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int count;
 

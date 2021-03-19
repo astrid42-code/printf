@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_treat_i.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/16 11:24:51 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/16 19:19:18 by astridgault      ###   ########.fr       */
+/*   Created: 2021/03/19 11:08:03 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 14:28:29 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@ void	ft_check_struct_i(t_flags *data)
 		data->zero = 0;
 }
 
-int		ft_nbr_neg(int nbr, t_flags *data)
-{
-	data->sign = 1;
-	nbr *= -1;
-	return (nbr);
-}
-
 void	ft_treat_i(t_flags *data)
 {
 	int	nbr;
@@ -33,7 +26,10 @@ void	ft_treat_i(t_flags *data)
 	nbr = (int)data->arg;
 	len = 0;
 	if (nbr < 0)
-		nbr = ft_nbr_neg(nbr, data);
+	{
+		data->sign = 1;
+		nbr *= -1;
+	}
 	len = ft_treat_len_i(data, len, nbr);
 	ft_check_struct_i(data);
 	if (nbr == 0)
@@ -46,24 +42,28 @@ void	ft_treat_i(t_flags *data)
 
 void	ft_print_nbr(t_flags *data, int len, int nbr)
 {
-	if (data->precision > 0 && (data->width == 0 || data->width <= data->precision))
+	if (data->precision > 0 && (data->width == 0 ||
+					data->width <= data->precision))
 		ft_treat_prec_i(len, nbr, data);
 	else if (data->width > 0)
 		ft_treat_width_i(len, nbr, data);
 	else
 	{
-		if (data->sign == 1)
+		if (nbr == -2147483648)
 		{
-			ft_putchar('-');
-			data->count++;
+			write(1, "-2147483648", 11);
+			data->count += 11;
 		}
-		else if (data->sign == 2)
+		else
 		{
-			ft_putchar('+');
-			data->count++;
+			if (data->sign == 1)
+			{
+				ft_putchar('-');
+				data->count++;
+			}
+			ft_putnbr(nbr);
+			data->count += len;
 		}
-		ft_putnbr(nbr);
-		data->count += len;
 	}
 }
 
@@ -79,25 +79,24 @@ void	ft_treat_prec_i(int len, int nbr, t_flags *data)
 	else if (data->precision < len)
 	{
 		if (nbr == -2147483648)
-		{
-			if (data->width <= len || data->width <= data->precision)
-				ft_putchar('-');
-			write(1, "2147483648", 10);
-			data->count++;
-		}
+			ft_intmin_i(data, len);
 		else
 		{
-			//printf("c = %d\n", data->count);
-			if (data->sign != 0)
+			if (data->sign == 1)
 			{
-				if (data->sign == 1)
-					ft_putchar('-');
-				else if (data->sign == 2)
-					ft_putchar('+');
+				ft_putchar('-');
 				data->count++;
 			}
 			ft_putnbr(nbr);
 		}
 		data->count += len;
 	}
+}
+
+void	ft_intmin_i(t_flags *data, int len)
+{
+	if (data->width <= len || data->width <= data->precision)
+		ft_putchar('-');
+	write(1, "2147483648", 10);
+	data->count++;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_annexe_i2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astridgaultier <astridgaultier@student.    +#+  +:+       +#+        */
+/*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/16 12:30:58 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/16 21:32:50 by astridgault      ###   ########.fr       */
+/*   Created: 2021/03/19 11:09:40 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 15:03:51 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,8 @@ void	ft_width_minus_nozero(int w, t_flags *data, int len, int nbr)
 	{
 		if (data->sign == 1)
 			ft_putchar('-');
-		else if (data->sign == 2)
-			ft_putchar('+');
 		data->count++;
 	}
-	/*if (data->sign != 0)
-		tmp--; // attention  : a priori il ne faut pas tjrs baisser en cas de sign != 0 > il faudrait une autre condition
-		data->count += tmp;*/
 	data->sign = 0;
 	if (nbr == 0)
 		ft_special_argz_prec(len, data);

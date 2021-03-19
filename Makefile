@@ -15,7 +15,8 @@ NAME	=	libftprintf.a
 SRCS	=	ft_printf.c ft_struct.c ft_fill_struct_prec.c ft_utils.c ft_utils2.c\
 			ft_parser.c ft_treat_c.c ft_treat_str.c ft_treat_i.c \
 			ft_annexe_i.c  ft_annexe_i2.c ft_special_argz.c ft_treat_u.c \
-			ft_annexe_u.c ft_treat_pc.c
+			ft_annexe_u.c ft_treat_pc.c ft_treat_hexa.c ft_annexe_hexa.c \
+			ft_utils_hexa.c ft_treat_ptr.c
 
 OBJS	=	${SRCS:.c=.o}
 

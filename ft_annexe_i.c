@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asgaulti <asgaulti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/16 11:28:40 by asgaulti          #+#    #+#             */
-/*   Updated: 2021/03/16 11:28:40 by asgaulti         ###   ########.fr       */
+/*   Created: 2021/03/18 15:20:50 by asgaulti          #+#    #+#             */
+/*   Updated: 2021/03/19 13:45:45 by asgaulti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_treat_len_i(t_flags *data, int len, int nbr)
+int			ft_treat_len_i(t_flags *data, int len, int nbr)
 {
 	if (nbr == 0)
 	{
@@ -55,23 +55,22 @@ void		ft_prec_sup(t_flags *data, int prec, int nbr)
 	else
 		tmp = prec - ft_nbrsize(nbr);
 	while (tmp-- > 0)
-			ft_putchar('0');
+		ft_putchar('0');
 	if (nbr == -2147483648)
 		write(1, "2147483648", 10);
 	else
 		ft_putnbr(nbr);
 	data->count += data->precision;
-	//printf("c = %d\n", data->count);
 }
 
-void	ft_treat_width_i(int len, int nbr, t_flags *data)
+void		ft_treat_width_i(int len, int nbr, t_flags *data)
 {
 	int	w;
 	int tmp;
 
 	w = data->width;
 	tmp = 0;
-	if (w <= len || w <= data->precision/* && data->precision == 0*/)
+	if (w <= len || w <= data->precision)
 		ft_treat_prec_i(len, nbr, data);
 	else if (w > len && data->minus == 0)
 	{
@@ -89,10 +88,10 @@ void	ft_treat_width_i(int len, int nbr, t_flags *data)
 	}
 }
 
-void	ft_width_nominus_zero(int w, t_flags *data, int len, int nbr)
+void		ft_width_nominus_zero(int w, t_flags *data, int len, int nbr)
 {
 	int	tmp;
-//a verif pour sign
+
 	if (data->sign != 0)
 	{
 		if (data->sign == 1)
@@ -115,7 +114,7 @@ void	ft_width_nominus_zero(int w, t_flags *data, int len, int nbr)
 		ft_treat_prec_i(len, nbr, data);
 }
 
-void	ft_width_nominus_nozero(int w, t_flags *data, int len, int nbr)
+void		ft_width_nominus_nozero(int w, t_flags *data, int len, int nbr)
 {
 	int tmp;
 
@@ -125,21 +124,14 @@ void	ft_width_nominus_nozero(int w, t_flags *data, int len, int nbr)
 		tmp = w - len;
 	data->count += tmp;
 	if (data->sign != 0)
-	{
-		//if (tmp < 1) // plus nécessaire puisque quand w = len ce n'est pas ici
-		//	data->count++;
 		tmp--;
-	}
 	while (tmp-- > 0)
 		ft_putchar(' ');
 	if (data->sign == 1)
 		ft_putchar('-');
 	else if (data->sign == 2)
 		ft_putchar('+');
-	//if (data->sign != 0)
-	//{
-		data->sign = 0;
-	//}
+	data->sign = 0;
 	if (nbr == 0)
 		ft_special_argz_prec(len, data);
 	else
